@@ -1,6 +1,6 @@
 import pytest
 import os
-from TestCase.yaml_util import yamlUtil
+from testcase.yaml_util import yamlUtil
 
 
 class Test_yaml():

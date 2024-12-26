@@ -1,7 +1,7 @@
 # POM 页面-对象-模型
 from selenium.webdriver.common.by import By
 from time import sleep
-from Pages.BasePage import BasePage
+from pages.BasePage import BasePage
 
 
 class UserLoginPage(BasePage):
