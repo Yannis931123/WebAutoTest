@@ -6,7 +6,7 @@ import os
 import time
 
 # 打开excel表格
-data = xlrd.open_workbook('D:\\Program Files\\PycharmProjects\\WebAutoTest\\TestExampleExecl\\testdata.xls')
+data = xlrd.open_workbook('D:\\Program Files\\WebAutoTest\\TestExampleExecl\\testdata.xls')
 
 table1 = data.sheet_by_index(0)
 table2 = data.sheet_by_index(1)
@@ -20,7 +20,7 @@ nclos2 = table2.ncols
 # print(table.row_values(2))
 # print(table.col_values(1))
 
-#获取excel工作簿总数
+# 获取excel工作簿总数
 nrows = table1.nrows
 ncols = table1.ncols
 # print(u"表数据行为(%d),列为(%d）"%(nrows1,ncols1))
@@ -65,4 +65,3 @@ ncols = table1.ncols
 #     def dict_data(self):
 #         if self.rowNum <= 1:
 #             print("总行数小于1")
-

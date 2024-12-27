@@ -1,14 +1,12 @@
 # -*- coding:utf-8 -*-
-# @Time:2020/3/3 13:21
-# @Author:whweia
-# @File:MySQL_dome.py
 import pymysql
 
-# host='47.113.116.171',
+
+# host='rm-bp1dp71y66b0r97gj708.mysql.rds.aliyuncs.com',
 # port=3306,
-# user='root',
-# password='root',
-# db='recruit_students'
+# user='tc_dev_5e7cf26',
+# password='tc_dev_5e7cf26_64732e',
+# db='tech_cube_ship_00'
 
 
 class MysqlManager(object):
@@ -20,19 +18,20 @@ class MysqlManager(object):
         self.db = db
 
     def connect(self):
-        "连接数据库"
+        """连接数据库"""
         try:
             conn = pymysql.connect(host=self.host,
-                                        port=self.port,
-                                        user=self.user,
-                                        password=self.password,
-                                        db=self.db)
+                                   port=self.port,
+                                   user=self.user,
+                                   password=self.password,
+                                   db=self.db)
             cursor = conn.cursor()
             return cursor
         except Exception as e:
             print(e)
 
     def get_data(self, sql):
+        global cursor
         try:
             cursor = self.connect()
             cursor.execute(sql)
@@ -46,9 +45,9 @@ class MysqlManager(object):
         try:
             conn = self.connect()
             cursor = conn.cursor()
-            sql = 'DELETE from t_school_info WHERE f_school_name = "%s"' % param
+            sql = 'DELETE from tech_cube_ship_00.ship_scm_user ssu WHERE ssu.username = "%s"' % param
             print(sql)
-            cursor.execute(sql)
+            cursor.execute(sql, (param,))
             result = conn.commit()
             return result
         except:
@@ -59,12 +58,11 @@ class MysqlManager(object):
 
 
 if __name__ == "__main__":
-    host='192.168.1.15',
-    port=3306,
-    user='root',
-    password='',
-    db='student'
+    host = 'rm-bp1dp71y66b0r97gj708.mysql.rds.aliyuncs.com'
+    port = 3306
+    user = 'tc_dev_5e7cf26'
+    password = 'tc_dev_5e7cf26_64732e'
+    db = 'tech_cube_ship_00'
     mc = MysqlManager(host, port, user, password, db)
-    r = mc.delete_data("573097")
+    r = mc.delete_data("shyt-v1")
     print(r)
-    # r = mc.delete_data(6389048)

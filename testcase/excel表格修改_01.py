@@ -1,6 +1,8 @@
 import os
 import xlrd
 from xlutils.copy import copy
+
+
 def edit_excel():
     # excel目录
     base_dir = os.path.dirname(os.path.abspath(__file__))
@@ -13,5 +15,7 @@ def edit_excel():
     ws.write(2, 1, '注册成功')
     # 保存修改后的excel
     workbooknew.save(save_testdata)
+
+
 if __name__ == '__main__':
     edit_excel()
