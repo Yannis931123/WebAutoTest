@@ -28,5 +28,5 @@ def calculate_BMI(weight, height):
     return BMI
 
 
-result_calculate = calculate_BMI(70, 1.8)
+result_calculate = calculate_BMI(70, 1.75)
 print(result_calculate)
