@@ -11,8 +11,8 @@ def write_excel():
                  'expect_data', 'sql'), ('1', '登录成功获取token', 'SIT', 'https://test-mrjade.com/admin/token', 'post',
                                          '{\n"json":{"password":"1234","username":mrjade"}\n}', '200', 'json',
                                          '[["token","$.."]]'), (
-                '2', '注册', 'SIT', 'https://test-mrjade.com/admin/register', 'post',
-                '{\n"json":{"password":"1234","username":mrjade"}\n}', '200', 'json')]
+                    '2', '注册', 'SIT', 'https://test-mrjade.com/admin/register', 'get',
+                    '{\n"json":{"password":"1234","username":mrjade"}\n}', '200', 'json')]
     # 遍历数组（excel行数据）
     for i in range(len(testdata)):
         print(testdata[i])

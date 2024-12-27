@@ -1,10 +1,10 @@
 import pytest
 import xlrd
 def get_data():
-    filename = "D:\\Program Files\\PycharmProjects\\WebAutoTest\\TestExampleExecl\\testdata.xls"
+    filename = "D:\\Program Files\\WebAutoTest\\TestExampleExecl\\testdata.xls"
     # 读取工作簿
     wb = xlrd.open_workbook(filename)
-    # 读取第一个sheet页
+    # 读取第一个sheet页 根据索引
     ws1 = wb.sheet_by_index(0)
     # ws1 = wb.sheet_by_name('Sheet1')
     # 读取行
