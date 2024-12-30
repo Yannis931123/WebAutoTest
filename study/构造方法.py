@@ -9,6 +9,8 @@ __init__()方法的作用：完成对象的初始化，可以理解成在创建�
 在面向对象的编程中，类（Class）是创建对象的蓝图或模板，它定义了对象应有的属性和方法。
 而对象（Object）或类的实例（Instance）则是根据类创建的具体个体，它拥有类中定义的属性和方法，并且可以有自己的状态（即属性值）。
 """
+
+
 class Student:
     name = None
     age = None
@@ -21,10 +23,10 @@ class Student:
         # print("创建一个构造方法："+name+", "+str(age)+", "+str(tel))
 
 
-stu = Student("xiaoming", 20, 12345678901)
-print(stu.name)
-print(stu.age)
-print(stu.tel)
+stu1 = Student("xiaoming", 20, 12345678901)
+print(stu1.name)
+print(stu1.age)
+print(stu1.tel)
 
 """
 __str__字符串方法：将类对象转化为字符串
@@ -55,9 +57,9 @@ class Student:
         return self.age < other.age
 
 
-stu1 = Student("xiaoming", 20, 12345678901)
-stu2 = Student("xioahong", 40, 12345678901)
-print(stu1 > stu2)
+stu2 = Student("xiaoming", 20, 12345678901)
+stu3 = Student("xiaohong", 40, 12345678901)
+print(stu2 > stu3)
 
 """
 __le__(self, other)比较大小，（支持包含等于，但不支持==）
@@ -70,7 +72,9 @@ class Student:
     age = None
     tel = None
 
+    # 定义了一个构造方法 __init__，这个方法会在创建新的 Student 实例时自动调用。它接受三个参数：name、age 和 tel
     def __init__(self, name, age, tel):
+        # 在构造方法中，使用 self 关键字将这些参数的值赋给实例属性
         self.name = name
         self.age = age
         self.tel = tel
@@ -79,12 +83,12 @@ class Student:
     def __str__(self):  # 先把类对象转化为字符串
         return f"name:{self.name},age:{self.age}"
 
-    def __le__(self, other):
+    def __le__(self, other):  # 定义了一个特殊方法 __le__，这个方法用于比较两个 Student 实例，判断当前实例是否小于或等于另一个实例
         return self.age <= other.age
 
 
 stu1 = Student("xiaoming", 20, 12345678901)
-stu2 = Student("xioahong", 40, 12345678901)
+stu2 = Student("xiaohong", 40, 12345678901)
 print(stu1 >= stu2)
 print(stu1 <= stu2)
 

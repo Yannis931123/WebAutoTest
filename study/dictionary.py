@@ -1,5 +1,4 @@
-slang_dic = {"觉醒年代": "AAA", "YYDS": "永远的神"}
-slang_dic["双减"] = "教育部政令"
+slang_dic = {"觉醒年代": "AAA", "YYDS": "永远的神", "双减": "教育部政令"}
 
 query_dic = input("请输入你想查询的词语：")
 if query_dic in slang_dic:

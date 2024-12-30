@@ -22,12 +22,12 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 # 禁止浏览器自动关闭
-option = webdriver.ChromeOptions()
+option = webdriver.EdgeOptions()
 option.add_experimental_option("detach", True)
 
 # 第二步
-# 创建 Chrome 浏览器实例
-driver = webdriver.Chrome(options=option)
+# 创建 Edge 浏览器实例
+driver = webdriver.Edge(options=option)
 
 # 第三步
 # 在浏览器中打开百度网站
