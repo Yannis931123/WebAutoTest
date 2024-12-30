@@ -18,7 +18,7 @@ pip install requests
 import requests
 
 # 2.准备有效URL
-url = 'http://www.baidu.com/'
+test_url = 'http://www.baidu.com/'
 # 3.使用requests发送请求,或者Response对象
 res = requests.get(url)
 print(res)

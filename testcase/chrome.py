@@ -21,10 +21,10 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 
 # 创建一个 WebDriver 实例
-driver = webdriver.Chrome()
+driver = webdriver.Edge()
 
 # 打开网页
-driver.get("http://www.baidu.com")
+driver.get("https://www.baidu.com")
 
 # 定位文本框元素
 input_element = driver.find_element("my_input")

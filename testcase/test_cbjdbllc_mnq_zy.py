@@ -6,6 +6,7 @@ import allure
 import messageSimulator
 from datetime import timedelta
 from tools import times
+import time
 
 SYSTEM_NAME = "新担保品"
 FEATURE_NAME = "常备借贷便利流程"

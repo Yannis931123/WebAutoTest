@@ -1,7 +1,7 @@
 import yaml
 
 
-class yamlUtil():
+class YamlUtil:
     def __init__(self, yaml_file):
         '''
         通过init把文件传入到这个类
@@ -9,7 +9,7 @@ class yamlUtil():
         '''
         self.yaml_file = yaml_file
 
-    # 读取ymal文件
+    # 读取yaml文件
     def read_yaml(self):
         '''
         读取yaml，将yaml反序列化，就是把我们yaml格式转换成dict格式
@@ -31,7 +31,7 @@ class yamlUtil():
 
 
 if __name__ == '__main__':
-    util = yamlUtil("../data/interface.yaml")
+    util = YamlUtil("../data/interface.yaml")
     data = util.read_yaml()  # 尝试读取 YAML 文件，并获取解析后的数据
     if data is not None:
         # 在这里处理 data，例如打印或进行其他操作

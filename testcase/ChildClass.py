@@ -20,7 +20,7 @@ class LoginClass(BaseClass):
         pwd = self.driver.find_element(*LoginClass.password)
         pwd.send.keys(password + Keys.RETURN)
 
-    #提交登录信息
+    # 提交登录信息
     def sign(self):
-        submit= self.driver.find_element(*LoginClass.sign_in)
+        submit = self.driver.find_element(*LoginClass.sign_in)
         submit.click()

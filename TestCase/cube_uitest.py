@@ -11,9 +11,9 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.select import Select
 
-driver = webdriver.Chrome()
+driver = webdriver.Edge()
 driver.maximize_window()
-driver.get('https://cube-poc.zhongan.io/')
+driver.get('https://cube.anlink.com/')
 
 # 等待加载
 driver.implicitly_wait(4)
@@ -26,8 +26,11 @@ passwordEle = driver.find_element(By.ID, value="temppassword")
 # 验证码输入框
 # veriCodeEle = driver.find_element(By.CSS_SELECTOR, value='input[placeholder="请输入验证码"]')
 # 输入登录信息和验证码
-userAccountEle.send_keys('zawb-yanxing')
-passwordEle.send_keys('AAAbbb111')
+driver.find_element(By.ID, "username").send_keys("admin")
+driver.find_element(By.ID, "temppassword").send_keys("Admin@2024")
+# driver.find_element(By.ID, "login-btn").click()
+# userAccountEle.send_keys('zawb-yanxing')
+# passwordEle.send_keys('AAAbbb111')
 # veriCodeEle.send_keys('验证码')
 # 点击登录
 ActionChains(driver).move_to_element(element).click().perform()
@@ -79,7 +82,6 @@ nextStepBtnEle.click()
 # 点击添加应用
 addAppBtnEle = driver.find_element(By.CLASS_NAME, value="ant-btn-primary")
 addAppBtnEle.click()
-
 
 # # 等待下拉框出现
 # wait = WebDriverWait(driver, 10)

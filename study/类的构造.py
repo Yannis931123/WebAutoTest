@@ -10,10 +10,11 @@ class Person:  # 定义类名用pascal命名方法（大驼峰CuteCat）#Person�
 
 
 # 创建 Person 类的实例
-person1 = Person("Alice", 30)  # 创建实例的时候，括号里是构造函数的参数;创建实例的时候，Alice作为name的参数，30作为age的参数
+# 创建实例的时候，括号里是构造函数的参数
+person1 = Person("Alice", 30)  # 创建实例的时候，Alice作为name的参数，30作为age的参数
 person2 = Person("Bob", 25)
 
-# 调用实例的方法
+# 调用实例的方法（用对象.方法来调用）
 person1.say_hello()  # 调用了实例的方法：调用了person1这个实例的say_hello方法
 person2.say_hello()
 

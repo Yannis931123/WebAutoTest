@@ -23,6 +23,7 @@ class Page(object):
         self.action = None
 
     def _get_page_elem(self, elem):
+        # _get_page_elem前面的下划线表示私有方法，不能直接调用，只能通过类名调用
         # 获取定位元素的 by，以及操作action
         for each in self.elements:
             if each['name'] == elem:
@@ -52,6 +53,7 @@ class Page(object):
                     cmd = cmd[:-1] + 'args' + ')'
         return cmd
 
+
 def get_page_elements(page):
     """动态加载页面定义文件，获取文件中定义的元素列表elements"""
     elements = None
@@ -60,7 +62,5 @@ def get_page_elements(page):
             m = importlib.import_module(page)
             elements = m.elements
         except Exception as e:
-            logger.error('error info : %s' %(e))
+            logger.error('error info : %s' % (e))
     return elements
-
-
