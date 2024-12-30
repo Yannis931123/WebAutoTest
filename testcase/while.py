@@ -14,7 +14,7 @@
 total = 0
 for i in range(1, 101):
     total = total + i
-print(total)
+# print(total)
 
 print("这是一个求平均值的程序")
 total = 0

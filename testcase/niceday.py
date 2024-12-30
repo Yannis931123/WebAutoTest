@@ -1,6 +1,6 @@
 """
 1.确定网址
-2.搭建关系  发送请求 接受响应
+2.搭建关系 发送请求 接受响应
 3.筛选数据
 4.保存本地
 
@@ -40,5 +40,5 @@ for i in data:
     #print(NewName,NewUrl)
 
     # 4.保存本地
-    request.urlretrieve(NewUrl, r'D:\Download\美女\\' + NewName + '.jpg')
+    request.urlretrieve(NewUrl, r'D:\Download\\' + NewName + '.jpg')
     print('下载完成!')

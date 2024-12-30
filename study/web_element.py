@@ -16,26 +16,26 @@
 # get_property(name)	获取 JavaScript 属性值，name表示属性名
 # get_dom_attribute(name)	获取 DOM 属性的值，name表示属性名
 # is_selected()	判断元素是否被选中，用于复选框和单选框
-#第一步
-#导入模块
+# 第一步
+# 导入模块
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-#禁止浏览器自动关闭
-option=webdriver.ChromeOptions()
-option.add_experimental_option("detach",True)
+# 禁止浏览器自动关闭
+option = webdriver.ChromeOptions()
+option.add_experimental_option("detach", True)
 
-#第二步
+# 第二步
 # 创建 Chrome 浏览器实例
-driver=webdriver.Chrome(options=option)
+driver = webdriver.Chrome(options=option)
 
-#第三步
+# 第三步
 # 在浏览器中打开百度网站
 driver.get("https://www.baidu.com/")
 
-#窗口最大化
+# 窗口最大化
 driver.maximize_window()
 
-#第四步
-#定位元素
-driver.find_element(By.ID,"kw").send_keys("selenium")
+# 第四步
+# 定位元素
+driver.find_element(By.ID, "kw").send_keys("selenium")

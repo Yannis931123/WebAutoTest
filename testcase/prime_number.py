@@ -11,7 +11,7 @@ def is_prime(n):
 
 
 def main():
-    filenames = ('a.txt', 'b.txt', 'c.txt')
+    filenames = ('../data/number_1_99.txt', '../data/number_100_999.txt', '../data/number_1000_9999.txt')
     fs_list = []
     try:
         for filename in filenames:
@@ -32,3 +32,7 @@ def main():
         for fs in fs_list:
             fs.close()
     print("操作完成")
+
+
+if __name__ == "__main__":
+    main()

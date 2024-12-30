@@ -41,6 +41,16 @@ class MysqlManager(object):
         finally:
             cursor.close()
 
+    def get_all_data(self, sql):
+        try:
+            cursor = self.connect()
+            cursor.execute(sql)
+            return cursor.fetchall()  # 返回所有匹配的记录
+        except Exception as e:
+            print('数据库操作失败，请检查！错误信息:', e)
+        finally:
+            cursor.close()
+
     def delete_data(self, param):
         try:
             conn = self.connect()
@@ -63,6 +73,11 @@ if __name__ == "__main__":
     user = 'tc_dev_5e7cf26'
     password = 'tc_dev_5e7cf26_64732e'
     db = 'tech_cube_ship_00'
-    mc = MysqlManager(host, port, user, password, db)
-    r = mc.delete_data("shyt-v1")
-    print(r)
+    # mc = MysqlManager(host, port, user, password, db)
+    # r = mc.delete_data("shyt-v1")
+    # print(r)
+    mysql = MysqlManager(host, port, user, password, db)
+    sql_query = "SELECT * FROM tech_cube_ship_00.ship_scm_user;"
+    all_data = MysqlManager.get_all_data(mysql, sql_query)
+    for record in all_data:
+        print(record)
