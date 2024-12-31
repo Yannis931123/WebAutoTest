@@ -6,7 +6,7 @@ import os
 import time
 
 # 打开excel表格
-data = xlrd.open_workbook('D:\\Program Files\\WebAutoTest\\TestExampleExecl\\testdata.xls')
+data = xlrd.open_workbook('/TestExampleExecl/testdata.xls')
 
 table1 = data.sheet_by_index(0)
 table2 = data.sheet_by_index(1)

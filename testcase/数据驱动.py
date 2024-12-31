@@ -8,15 +8,16 @@ class readExcelMethod():
     :sheetName: sheet页的名称
     """
 
-    def __init__(self, fileName: str, sheetName='Sheet1'):
-        self.fileName = fileName  # 文件路径
-        self.sheetName = sheetName  # excel sheet页的名称
+    def __init__(self, file_name: str, sheet_name='Sheet1'):
+        self.fileName = file_name  # 文件路径
+        self.sheetName = sheet_name  # excel sheet页的名称
         super(readExcelMethod, self).__init__()
 
-    def readExcel(cls):
+    def read_excel(cls):
         df = pd.read_excel(cls.fileName, sheet_name=cls.sheetName)
         df = df.T
-        testData = []
+        test_data = []
         for i in range(len(df)):
-            testData.append(list(df[i]))
-        return testData
+            test_data.append(list(df[i]))
+        return test_data
+

@@ -16,9 +16,9 @@ class ExcelUtil(object):
         # 第三步：获得excel的行数和列数
         # print(sheet.max_row, sheet.max_column)
         all_list = []
-        for rows in range(2, sheet.max_row+1):  # 第二行开始，去掉行标题
+        for rows in range(2, sheet.max_row + 1):  # 第二行开始，去掉行标题
             temp_list = []
-            for cols in range(1, sheet.max_column+1):
+            for cols in range(1, sheet.max_column + 1):
                 # print(sheet.cell(rows, cols).value)
                 temp_list.append(sheet.cell(rows, cols).value)
             # print(temp_list)
@@ -28,8 +28,6 @@ class ExcelUtil(object):
         return all_list
 
 
-
 if __name__ == '__main__':
     ExcelUtil().read_excel()
     print(ExcelUtil().read_excel())
-

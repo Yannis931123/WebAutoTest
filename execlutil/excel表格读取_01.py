@@ -1,7 +1,7 @@
 import pytest
 import xlrd
 def get_data():
-    filename = "D:\\Program Files\\WebAutoTest\\TestExampleExecl\\testdata.xls"
+    filename = "/TestExampleExecl/testdata.xls"
     # 读取工作簿
     wb = xlrd.open_workbook(filename)
     # 读取第一个sheet页 根据索引

@@ -1,6 +1,6 @@
 import xlrd
 
-wb = xlrd.open_workbook('D:\\Program Files\\WebAutoTest\\TestExampleExecl\\testdata.xls')  # 打开Excel文件
+wb = xlrd.open_workbook('/TestExampleExecl/testdata.xls')  # 打开Excel文件
 ws1 = wb.sheet_by_name('Sheet1')  # 打开工作表 根据sheet名
 rows = ws1.nrows
 cols = ws1.ncols

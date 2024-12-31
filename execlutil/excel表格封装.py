@@ -3,9 +3,9 @@ import xlrd
 
 
 class ExeclUtil:
-    def __init__(self, excelPath, sheetName="Sheet1"):
-        self.data = xlrd.open_workbook(excelPath)
-        self.table = self.data.sheet_by_name(sheetName)
+    def __init__(self, excelpath, sheetname="Sheet1"):
+        self.data = xlrd.open_workbook(excelpath)
+        self.table = self.data.sheet_by_name(sheetname)
         self.key = self.table.row_values(0)
         self.rowNum = self.table.nrows
         self.colNum = self.table.ncols
@@ -27,10 +27,11 @@ class ExeclUtil:
 
 
 if __name__ == "__main__":
-    filepath = "D:\\Program Files\\PycharmProjects\\WebAutoTest\\TestExampleExecl\\testdata.xls"
+    filepath = '/TestExampleExecl/testdata.xls'
     sheetName = "Sheet1"
     data = ExeclUtil(filepath, sheetName)
     print(data.dict_data())
+
     # def get_data(self,file_name,sheet_id):
     #     data = xlrd.open_workbook(file_name)
     #     tables = data.sheets()[sheet_id]
@@ -52,4 +53,4 @@ if __name__ == "__main__":
     #     return self.data.col_values(col)
     #
     # def get_data_by_index(self,index):
-    #     return self.data.cell_value(index[0],index
+    #     return self.data.cell_value(index[0],index)

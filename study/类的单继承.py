@@ -1,4 +1,5 @@
 """
+在Python中一个子类可以继承N多个父类，这是与 Java决然不同的一点。Java属于单继承，而Python属于多继承，并且每个类都默认继承自object类。当然，一个子类可以有多个父类，一个父类也可以有多个子类。
 类继承练习：人力系统
 1.员工分为两类：全职员工 FullTimeEmployee 兼职员工 PartTimeEmployee
 2.全职员工和兼职都有"姓名 name" "工号 id"属性

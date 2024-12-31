@@ -13,7 +13,7 @@ class Mammal:
 
 class Human(Mammal):
     def __init__(self, name, sex):
-        super().__init__(name, sex)#调用父类的构造函数，继承父类的所有属性
+        super().__init__(name, sex)  # 调用父类的构造函数，继承父类的所有属性
         self.has_tail = False
 
     def read(self):

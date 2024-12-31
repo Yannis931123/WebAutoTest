@@ -7,13 +7,18 @@
 
 
 class Student:
+    country = 'china'  # 类属性，所有实例共享
+
     def __init__(self, name, student_id):
+        # 类中存在 属性 和 行为（被封装成方法）
+        # name、student_id、grades都是实例的属性
         self.name = name
         self.student_id = student_id
         # 初始化一个字典 grades，用于存储学生的成绩。字典的键是科目名称，值是对应的成绩，初始值都设为0
         self.grades = {"语文": 0, "数学": 0, "英语": 0}  # 不需要从参数里获取，可以直接定义
 
     def set_grades(self, course, grade):
+        # course和grade是参数，方法中定义的参数，需要从调用方法时传入
         if course in self.grades:  # 判断科目是否在成绩中存在，不存在则不做set
             self.grades[course] = grade
         else:
