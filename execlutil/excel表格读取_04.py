@@ -1,6 +1,6 @@
 import pandas as pd
 
-file = '/TestExampleExecl/testdata.xls'
+file = '../TestExampleExecl/testdata.xls'
 wb = pd.read_excel(file, sheet_name='Sheet1', header=0)
 # print(wb)
 
