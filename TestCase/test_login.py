@@ -1,3 +1,4 @@
+import os
 import pytest
 import openpyxl
 import allure
@@ -5,9 +6,10 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException,NoSuchElementException
+from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from selenium.webdriver.common.action_chains import ActionChains
 from position.constants import URL_TEST, USERNAME_LOCATER, PASSWORD_LOCATER, LOGIN_BUTTON, USER_BUTTON, LOGOUT_BUTTON
+import position.constants as constants
 
 
 # 读取Excel文件中的数据
@@ -24,15 +26,15 @@ def read_excel_data(file_path, sheet_name):
 # 登录函数
 def login(driver, username, password):
     with allure.step('步骤1：打开页面'):  # # Allure报告步骤
-        driver.get(URL_TEST)  # 替换为登录URL
+        driver.get(constants.URL_TEST)  # 替换为登录URL
     with allure.step('步骤2：输入账号和密码'):
         try:
             username_input = WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.ID, USERNAME_LOCATER))  # 替换为实际的用户名输入框ID
+                EC.presence_of_element_located((By.ID, constants.USERNAME_LOCATER))  # 替换为实际的用户名输入框ID
             )
             username_input.send_keys(username)
             password_input = WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.ID, PASSWORD_LOCATER))  # 替换为实际的密码输入框ID
+                EC.presence_of_element_located((By.ID, constants.PASSWORD_LOCATER))  # 替换为实际的密码输入框ID
             )
             password_input.send_keys(password)
         except (NoSuchElementException, TimeoutException) as e:
@@ -40,25 +42,28 @@ def login(driver, username, password):
     with allure.step('步骤3：点击登录按钮'):
         try:
             login_button = WebDriverWait(driver, 10).until(
-                EC.element_to_be_clickable((By.ID, LOGIN_BUTTON))  # 替换为实际的登录按钮ID
+                EC.element_to_be_clickable((By.ID, constants.LOGIN_BUTTON))  # 替换为实际的登录按钮ID
             )
             login_button.click()
         except (NoSuchElementException, TimeoutException) as e:
             print(f"点击登录失败，错误信息：{e}")
     with allure.step('步骤4：判断是否登录成功'):
         try:
+            # 等待用户按钮可点击并移动鼠标到该元素上
             ele1 = WebDriverWait(driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, USER_BUTTON))
+                EC.element_to_be_clickable((By.XPATH, constants.USER_BUTTON))
             )
             actions = ActionChains(driver)
             actions.move_to_element(ele1).perform()
-            print(f"登录成功:{username}")
+            print(f"登录成功:{username}")  # 替换为实际的用户名
+            # 等待登出按钮可点击并点击
             ele2 = WebDriverWait(driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, LOGOUT_BUTTON))
+                EC.element_to_be_clickable((By.XPATH, constants.LOGOUT_BUTTON))
             )
             ele2.click()
+            # 等待用户名输入框重新出现，表示已登出
             WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.ID, USERNAME_LOCATER))
+                EC.presence_of_element_located((By.ID, constants.USERNAME_LOCATER))
             )
         except Exception as e:
             print(f"登录失败:{username},错误{e}")
@@ -76,14 +81,23 @@ def driver():
 # pytest参数化测试
 @pytest.mark.parametrize(
     "username,password",
-    read_excel_data('test_data.xlsx', 'Sheet1')  # 替换为你的Excel文件路径和Sheet名称
+    read_excel_data(r'../data/test_data.xlsx', 'Sheet1')  # 替换为你的Excel文件路径和Sheet名称
 )
 def test_login(driver, username, password):
     login(driver, username, password)
 
 
 if __name__ == '__main__':
-    pytest.main(["-s", "-v", "--alluredir=allure_file"])  # 每次运行前清除allure_file中的文件，为防止数据重复
+    # 运行pytest测试，并指定Allure结果文件的输出目录
+    pytest.main()  # 执行所有测试用例
+    # 生成Allure报告
+    os.system("allure serve ../allure_results")
+    # os.system("allure generate ../allure_results -o ./report --clean")
+    # os.system("allure open ./report")
+    # os.system("allure serve ./report")
+
+    # os.system("allure generate ../allure_results -o ./report --clean")
+
 
 # allure generate allure_file -o allure_report --clean
 # allure open allure_report
