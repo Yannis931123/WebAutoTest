@@ -6,14 +6,17 @@ from playwright.sync_api import Page, expect, sync_playwright
 @pytest.fixture(scope="module")
 def browser():
     # 初始化浏览器实例
-    browser = sync_playwright().start()
+    playwright = sync_playwright().start()
+    browser = playwright.chromium.launch()  # 这里使用 Chromium 浏览器作为示例，你可以根据需要选择其他浏览器，如 playwright.firefox.launch() 或 playwright.webkit.launch()
     context = browser.new_context()
-    yield context
+    page = context.new_page()  # 创建一个新的页面
+    yield page  # 直接将 page 传递给测试函数
     # 关闭浏览器实例
     browser.close()
 
 
-def test_example(page: Page) -> None:  # 只有一个参数 page，它被注解为 Page 类型  -> None 表示这个函数没有返回值，即它的返回类型是 None
+def test_cube_pytest(browser):  # 接收 browser fixture
+    page = browser  # 从 browser fixture 中获取 page
     page.goto(
         "http://cube-front.product.poc.za-tech.net/sso/login.html?service=za-cube&target=aHR0cDovL2N1YmUtZnJvbnQucHJvZHVjdC5wb2MuemEtdGVjaC5uZXQvbG9naW4%2FcmVkaXJlY3Q9L3NoaXAvcHVibGlzaC9wcm9qZWN0")
     page.get_by_placeholder("请输入账号").click()
